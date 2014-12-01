@@ -4,27 +4,40 @@
 
 #This is a "TypeError":
 
-#print(u"shirt" + 5)
+def f1():
+    print(u"shirt" + 5)
+
+f1()
 
 
 
 #This is a "SyntaxError":
 
-#for i in range(5)
-#    print(u"orange")
+def f2():
+    for i in range(5)
+        print(u"orange")
+
+f2()
 
 
 
 #This is an "AttributeError":
 
-#a = 5
+def f3():
+    a = 5
 
-#print(a.info)
+    print(a.info)
+
+f3()
 
 
 
 #This is a "NameError":
 
-#a = 5
+def f4():
+    a = 5
 
-#print(b)
+    print(b)
+
+f4()
+
