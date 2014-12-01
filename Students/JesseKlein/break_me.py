@@ -7,37 +7,37 @@
 def f1():
     print(u"shirt" + 5)
 
-f1()
+#f1()
 
 
 
 #This is a "SyntaxError":
 
 def f2():
-    for i in range(5)
+    for i in range(5):
         print(u"orange")
 
-f2()
+#f2()
 
 
 
 #This is an "AttributeError":
 
-def f3():
-    a = 5
+#def f3():
+#    a = 5
 
-    print(a.info)
+#    print(a.info)
 
-f3()
+#f3()
 
 
 
 #This is a "NameError":
 
-def f4():
-    a = 5
+#def f4():
+#    a = 5
 
-    print(b)
+#    print(b)
 
-f4()
+#f4()
 
