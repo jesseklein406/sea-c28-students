@@ -70,7 +70,7 @@
 <h2>Review/Questions<a class="headerlink" href="#review-questions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="review-of-previous-classes">
 <h3>Review of Previous Classes<a class="headerlink" href="#review-of-previous-classes" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
+<ul class="build simple">
 <li>Sequences<ul>
 <li>Slicing</li>
 <li>Lists</li>
@@ -88,7 +88,8 @@
 </ul>
 </li>
 </ul>
-<p>Any questions?</p>
+<div class="container">
+Any questions?</div>
 <p>A couple other nifty utilties with for loops:</p>
 <p><strong>tuple unpacking:</strong></p>
 <p>remember this?</p>
@@ -96,10 +97,10 @@
 </pre></div>
 </div>
 <p>You can do that in a for loop, also:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [4]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span>
-
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [3]: </span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="gp">In [4]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span>
 <span class="gp">In [5]: </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
-<span class="go">            print &quot;i:%i, j:%i&quot;%(i, j)</span>
+<span class="go">            print(&quot;i:%i, j:%i&quot; % (i, j))</span>
 
 <span class="go">i:1, j:2</span>
 <span class="go">i:3, j:4</span>
@@ -111,11 +112,9 @@
 <h3>Looping through two loops at once:<a class="headerlink" href="#looping-through-two-loops-at-once" title="Permalink to this headline">¶</a></h3>
 <p><strong>zip:</strong></p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [10]: </span><span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-
 <span class="gp">In [11]: </span><span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
-
 <span class="gp">In [12]: </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">):</span>
-<span class="gp">   ....: </span>    <span class="k">print</span> <span class="s">&quot;i:</span><span class="si">%i</span><span class="s">, j:</span><span class="si">%i</span><span class="s">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;i:</span><span class="si">%i</span><span class="s">, j:</span><span class="si">%i</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
 <span class="gp">   ....:</span>
 <span class="go">i:1, j:3</span>
 <span class="go">i:2, j:4</span>
@@ -132,7 +131,8 @@
     <span class="n">msg</span> <span class="o">+=</span> <span class="n">piece</span>
 </pre></div>
 </div>
-<p>But: strings are immutable &#8211; python needs to create a new string each time you add a piece &#8211; not efficient:</p>
+<p>But: strings are immutable &#8211; python needs to create a new string each time you
+add a piece &#8211; not efficient:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">msg</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">piece</span> <span class="ow">in</span> <span class="n">list_of_stuff</span><span class="p">:</span>
     <span class="n">msg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">piece</span><span class="p">)</span>
@@ -191,13 +191,10 @@
 <h3>Dictionary Constructors<a class="headerlink" href="#dictionary-constructors" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span><span class="s">&#39;key1&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;key2&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
 <span class="go">{&#39;key1&#39;: 3, &#39;key2&#39;: 5}</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">([(</span><span class="s">&#39;key1&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),(</span><span class="s">&#39;key2&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>
 <span class="go">{&#39;key1&#39;: 3, &#39;key2&#39;: 5}</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">(</span><span class="n">key1</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">key2</span><span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">(</span><span class="n">key1</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">key2</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="go">{&#39;key1&#39;: 3, &#39;key2&#39;: 5}</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s">&#39;key1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s">&#39;key2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
@@ -209,15 +206,11 @@
 <div class="section" id="dictionary-indexing">
 <h3>Dictionary Indexing<a class="headerlink" href="#dictionary-indexing" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;Brian&#39;</span><span class="p">,</span> <span class="s">&#39;score&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">}</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s">&#39;score&#39;</span><span class="p">]</span>
 <span class="go">42</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s">&#39;one&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s">&#39;zero&#39;</span><span class="p">}</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">&#39;zero&#39;</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s">&#39;non-existing key&#39;</span><span class="p">]</span>
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
@@ -227,7 +220,7 @@
 <span class="gr">KeyError</span>: <span class="n">&#39;non-existing key&#39;</span>
 </pre></div>
 </div>
-<p>Keys can be any immutable:</p>
+<p>Keys can be any <strong>immutable</strong> object:</p>
 <ul class="simple">
 <li>number</li>
 <li>string</li>
@@ -243,15 +236,20 @@
 </div>
 <p>Actually &#8211; any &#8220;hashable&#8221; type.</p>
 <p>Hash functions convert arbitrarily large data to a small proxy (usually int)</p>
+<div class="build container">
 <p>Always return the same proxy for the same input</p>
 <p>MD5, SHA, etc</p>
-<p>Dictionaries hash the key to an integer proxy and use it to find the key and value.</p>
-<p>Key lookup is efficient because the hash function leads directly to a bucket with very few keys (often just one)</p>
+<p>Dictionaries hash the key to an integer proxy and use it to find the key
+and value.</p>
+<p>Key lookup is efficient because the hash function leads directly to a
+bucket with very few keys (often just one)</p>
 <p>What would happen if the proxy changed after storing a key?</p>
 <p>Hashability requires immutability</p>
 <p>Key lookup is very efficient</p>
 <p>Same average time regardless of size</p>
+</div>
 <p>Note: Python name look-ups are implemented with dict &#8211; it&#8217;s highly optimized</p>
+<div class="build container">
 <p>Key to value:</p>
 <ul class="simple">
 <li>lookup is one way</li>
@@ -263,6 +261,7 @@
 <p>If you need to check dict values often, create another dict or set</p>
 <p>(up to you to keep them in sync)</p>
 </div>
+</div>
 <div class="section" id="dictionary-ordering-not">
 <h3>Dictionary Ordering (not)<a class="headerlink" href="#dictionary-ordering-not" title="Permalink to this headline">¶</a></h3>
 <p>Dictionaries have no defined order</p>
@@ -273,6 +272,11 @@
 <span class="gh">Out[354]: </span><span class="go">[&#39;three&#39;, &#39;two&#39;, &#39;one&#39;]</span>
 </pre></div>
 </div>
+<div class="build container">
+<p>You will be fooled by what you see into thinking that the order of pairs
+can be relied on.</p>
+<p>It cannot.</p>
+</div>
 </div>
 <div class="section" id="dictionary-iterating">
 <h3>Dictionary Iterating<a class="headerlink" href="#dictionary-iterating" title="Permalink to this headline">¶</a></h3>
@@ -280,7 +284,7 @@
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [15]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;Brian&#39;</span><span class="p">,</span> <span class="s">&#39;score&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">}</span>
 
 <span class="gp">In [16]: </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
-<span class="go">    print x</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="gp">   ....:</span>
 <span class="go">score</span>
 <span class="go">name</span>
@@ -309,7 +313,7 @@
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [26]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;Brian&#39;</span><span class="p">,</span> <span class="s">&#39;score&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">}</span>
 
 <span class="gp">In [27]: </span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-<span class="go">    print &quot;%s: %s&quot; % (k,v)</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">))</span>
 <span class="gp">   ....:</span>
 <span class="go">score: 42</span>
 <span class="go">name: Brian</span>
@@ -320,7 +324,7 @@
 <h3>Dictionary Performance<a class="headerlink" href="#dictionary-performance" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>indexing is fast and constant time: O(1)</li>
-<li><tt class="docutils literal"><span class="pre">x</span> <span class="pre">in</span> <span class="pre">s</span></tt> constant time: O(1)</li>
+<li>Membership (<tt class="docutils literal"><span class="pre">x</span> <span class="pre">in</span> <span class="pre">s</span></tt>) constant time: O(1)</li>
 <li>visiting all is proportional to n: O(n)</li>
 <li>inserting is constant time: O(1)</li>
 <li>deleting is constant time: O(1)</li>
@@ -342,42 +346,43 @@
 <span class="gh">Out[7]: </span><span class="go">False</span>
 </pre></div>
 </div>
-<p>Containment is on the keys.</p>
-<p>Getting something: (like indexing)</p>
+<p>Membership is on the keys.</p>
+<p>(like indexing)</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [9]: </span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;this&#39;</span><span class="p">)</span>
 <span class="gh">Out[9]: </span><span class="go">5</span>
 </pre></div>
 </div>
+<div class="build container">
 <p>But you can specify a default</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [11]: </span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">u&#39;something&#39;</span><span class="p">,</span> <span class="s">u&#39;a default&#39;</span><span class="p">)</span>
 <span class="gh">Out[11]: </span><span class="go">u&#39;a default&#39;</span>
 </pre></div>
 </div>
 <p>Never raises an Exception (default default is None)</p>
-<p>iterating</p>
+</div>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [13]: </span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
 <span class="gp">   ....: </span>    <span class="k">print</span> <span class="n">item</span>
 <span class="gp">   ....:</span>
 <span class="go">(&#39;this&#39;, 5)</span>
 <span class="go">(&#39;that&#39;, 7)</span>
 <span class="gp">In [15]: </span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">iterkeys</span><span class="p">():</span>
-<span class="go">    print key</span>
+<span class="gp">   ....: </span>    <span class="k">print</span> <span class="n">key</span>
 <span class="gp">   ....:</span>
 <span class="go">this</span>
 <span class="go">that</span>
 <span class="gp">In [16]: </span><span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
-<span class="go">    print val</span>
+<span class="gp">   ....: </span>    <span class="k">print</span> <span class="n">val</span>
 <span class="gp">   ....:</span>
 <span class="go">5</span>
 <span class="go">7</span>
 </pre></div>
 </div>
-<p>the <tt class="docutils literal"><span class="pre">iter*</span></tt> methods don&#8217;t actually create the lists.</p>
-<p>&#8220;Popping&#8221;: getting the value while removing it</p>
-<p>pop out a particular key</p>
+<p>the <tt class="docutils literal"><span class="pre">iter*</span></tt> methods <em>don&#8217;t actually create the lists</em>.</p>
+<p>gets the value at a given key while removing it</p>
+<div class="build container">
+<p>Pop just a key</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [19]: </span><span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;this&#39;</span><span class="p">)</span>
 <span class="gh">Out[19]: </span><span class="go">5</span>
-
 <span class="gp">In [20]: </span><span class="n">d</span>
 <span class="gh">Out[20]: </span><span class="go">{&#39;that&#39;: 7}</span>
 </pre></div>
@@ -385,23 +390,21 @@
 <p>pop out an arbitrary key, value pair</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [23]: </span><span class="n">d</span><span class="o">.</span><span class="n">popitem</span><span class="p">()</span>
 <span class="gh">Out[23]: </span><span class="go">(&#39;that&#39;, 7)</span>
-
 <span class="gp">In [24]: </span><span class="n">d</span>
 <span class="gh">Out[24]: </span><span class="go">{}</span>
 </pre></div>
 </div>
-<p>This one is handy:</p>
+</div>
 <p><tt class="docutils literal"><span class="pre">setdefault(key[,</span> <span class="pre">default])</span></tt></p>
 <p>gets the value if it&#8217;s there, sets it if it&#8217;s not</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [27]: </span><span class="n">d</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s">u&#39;something&#39;</span><span class="p">,</span> <span class="s">u&#39;a value&#39;</span><span class="p">)</span>
-<span class="gh">Out[27]: </span><span class="go">u&#39;a value&#39;</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [26]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
 
+<span class="gp">In [27]: </span><span class="n">d</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s">u&#39;something&#39;</span><span class="p">,</span> <span class="s">u&#39;a value&#39;</span><span class="p">)</span>
+<span class="gh">Out[27]: </span><span class="go">u&#39;a value&#39;</span>
 <span class="gp">In [28]: </span><span class="n">d</span>
 <span class="gh">Out[28]: </span><span class="go">{u&#39;something&#39;: u&#39;a value&#39;}</span>
-
-<span class="gp">In [29]: </span><span class="n">d</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s">u&#39;something&#39;</span><span class="p">,</span> <span class="s">u&#39;a value&#39;</span><span class="p">)</span>
+<span class="gp">In [29]: </span><span class="n">d</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s">u&#39;something&#39;</span><span class="p">,</span> <span class="s">u&#39;a different value&#39;</span><span class="p">)</span>
 <span class="gh">Out[29]: </span><span class="go">u&#39;a value&#39;</span>
-
 <span class="gp">In [30]: </span><span class="n">d</span>
 <span class="gh">Out[30]: </span><span class="go">{u&#39;something&#39;: u&#39;a value&#39;}</span>
 </pre></div>
@@ -410,19 +413,19 @@
 <p>Like <tt class="docutils literal"><span class="pre">keys()</span></tt>, <tt class="docutils literal"><span class="pre">values()</span></tt>, <tt class="docutils literal"><span class="pre">items()</span></tt>, but maintain a link to the original dict</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [47]: </span><span class="n">d</span>
 <span class="gh">Out[47]: </span><span class="go">{u&#39;something&#39;: u&#39;a value&#39;}</span>
-
 <span class="gp">In [48]: </span><span class="n">item_view</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">viewitems</span><span class="p">()</span>
+<span class="gp">In [49]: </span><span class="n">item_view</span>
+<span class="gh">Out[49]: </span><span class="go">dict_items([(u&#39;something&#39;, u&#39;a value&#39;)])</span>
+<span class="gp">In [50]: </span><span class="n">d</span><span class="p">[</span><span class="s">&#39;something else&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">u&#39;another value&#39;</span>
 
-<span class="gp">In [49]: </span><span class="n">d</span><span class="p">[</span><span class="s">&#39;something else&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">u&#39;another value&#39;</span>
-
-<span class="gp">In [50]: </span><span class="n">item_view</span>
-<span class="gh">Out[50]: </span><span class="go">dict_items([(&#39;something else&#39;, u&#39;another value&#39;), (u&#39;something&#39;, u&#39;a value&#39;)])</span>
+<span class="gp">In [51]: </span><span class="n">item_view</span>
+<span class="gh">Out[51]: </span><span class="go">dict_items([(&#39;something else&#39;, u&#39;another value&#39;), (u&#39;something&#39;, u&#39;a value&#39;)])</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="sets">
 <h3>Sets<a class="headerlink" href="#sets" title="Permalink to this headline">¶</a></h3>
-<p><tt class="docutils literal"><span class="pre">set</span></tt>  is an unordered collection of distinct values</p>
+<p>A <tt class="docutils literal"><span class="pre">set</span></tt>  is an unordered collection of distinct values</p>
 <p>Essentially a dict with only keys</p>
 <p>Set Constructors</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="nb">set</span><span class="p">()</span>
@@ -445,6 +448,7 @@
 <div class="section" id="set-properties">
 <h3>Set Properties<a class="headerlink" href="#set-properties" title="Permalink to this headline">¶</a></h3>
 <p><tt class="docutils literal"><span class="pre">Set</span></tt>  members must be hashable</p>
+<div class="build container">
 <p>Like dictionary keys &#8211; and for same reason (efficient lookup)</p>
 <p>No indexing (unordered)</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -454,9 +458,10 @@
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="set-methods">
 <h3>Set Methods<a class="headerlink" href="#set-methods" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="o">&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="c"># an arbitrary member</span>
 <span class="mi">1</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
@@ -505,8 +510,7 @@
 </div>
 <div class="section" id="exceptions">
 <h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id2">
-<h3>Exceptions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="left container">
 <p>Another Branching structure:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
     <span class="n">do_something</span><span class="p">()</span>
@@ -517,8 +521,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id3">
-<h3>Exceptions<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>Exceptions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Never Do this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
     <span class="n">do_something</span><span class="p">()</span>
@@ -529,8 +533,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id4">
-<h3>Exceptions<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>Exceptions<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>Use Exceptions, rather than your own tests:</p>
 <p>Don&#8217;t do this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">do_something</span><span class="p">()</span>
@@ -550,13 +554,15 @@
 <div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
     <span class="n">num_in</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_in</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">u&quot;Input must be an integer, try again.&quot;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">u&quot;Input must be an integer, try again.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Or let the Exception be raised....</p>
-<p>&#8220;it&#8217;s Easier to Ask Forgiveness than Permission&#8221;</p>
-<blockquote>
-<div>&#8211; Grace Hopper</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre>&quot;it&#39;s Easier to Ask Forgiveness than Permission&quot;
+
+-- Grace Hopper
+</pre></div>
+</div>
 <p><a class="reference external" href="http://www.youtube.com/watch?v=AZDWveIdqjY">http://www.youtube.com/watch?v=AZDWveIdqjY</a></p>
 <p>(Pycon talk by Alex Martelli)</p>
 <p>For simple scripts, let exceptions happen.</p>
@@ -570,7 +576,7 @@
     <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;missing.txt&#39;</span><span class="p">)</span>
     <span class="n">process</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>   <span class="c"># never called if file missing</span>
 <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">&quot;couldn&#39;t open missing.txt&quot;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">u&quot;couldn&#39;t open missing.txt&quot;</span><span class="p">)</span>
 <span class="k">finally</span><span class="p">:</span>
     <span class="n">do_some_clean</span><span class="o">-</span><span class="n">up</span>
 </pre></div>
@@ -583,13 +589,15 @@
     <span class="n">do_something</span><span class="p">()</span>
     <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;missing.txt&#39;</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">&quot;couldn&#39;t open missing.txt&quot;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">u&quot;couldn&#39;t open missing.txt&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">process</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="c"># only called if there was no exception</span>
 </pre></div>
 </div>
-<p>Advantage:</p>
-<p>you know where the Exception came from</p>
+<dl class="docutils">
+<dt>Advantage:</dt>
+<dd>you know where the Exception came from</dd>
+</dl>
 </div>
 <div class="section" id="exceptions-using-them">
 <h3>Exceptions &#8211; using them<a class="headerlink" href="#exceptions-using-them" title="Permalink to this headline">¶</a></h3>
@@ -602,10 +610,12 @@
     <span class="k">raise</span>
 </pre></div>
 </div>
+<div class="build container">
 <p>Particularly useful if you catch more than one exception:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">except</span> <span class="p">(</span><span class="ne">IOError</span><span class="p">,</span> <span class="n">BufferError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">the_error</span><span class="p">:</span>
     <span class="n">do_something_with</span> <span class="p">(</span><span class="n">the_error</span><span class="p">)</span>
 </pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="raising-exceptions">
@@ -617,30 +627,33 @@
         <span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
 </pre></div>
 </div>
+<div class="build container">
 <p>when you call it:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [515]: </span><span class="n">divide</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="go">ZeroDivisionError: b can not be zero</span>
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="built-in-exceptions">
 <h3>Built in Exceptions<a class="headerlink" href="#built-in-exceptions" title="Permalink to this headline">¶</a></h3>
-<p>You can create your own custom exceptions</p>
-<p>But...</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">exp</span> <span class="o">=</span> \
- <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">__builtin__</span><span class="p">)</span> <span class="k">if</span> <span class="s">&quot;Error&quot;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
+<p>You can create your own custom exceptions, but...</p>
+<div class="build container">
+<div class="highlight-python"><div class="highlight"><pre><span class="n">exp</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">__builtin__</span><span class="p">)</span> <span class="k">if</span> <span class="s">&quot;Error&quot;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">exp</span><span class="p">)</span>
 <span class="mi">32</span>
 </pre></div>
 </div>
 <p>For the most part, you can/should use a built in one</p>
+</div>
 <p>Choose the best match you can for the built in Exception you raise.</p>
+<div class="build container">
 <p>Example (for last week&#8217;s ackerman homework):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
     <span class="k">raise</span> <span class="ne">ValueError</span>
 </pre></div>
 </div>
-<p>Is it the <em>value</em> or the input the problem here?</p>
+<p>Is the <em>value</em> of the input the problem here?</p>
 <p>Nope: the <em>type</em> is the problem:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
     <span class="k">raise</span> <span class="ne">TypeError</span>
@@ -649,20 +662,23 @@
 <p>but should you be checking type anyway? (EAFP)</p>
 </div>
 </div>
+</div>
 <div class="section" id="file-reading-and-writing">
 <h2>File Reading and Writing<a class="headerlink" href="#file-reading-and-writing" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="files">
 <h3>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h3>
 <p>Text Files</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">io</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;secrets.txt&#39;</span><span class="p">,</span> <span class="n">codec</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;secrets.txt&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
 <span class="n">secret_data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 <p><tt class="docutils literal"><span class="pre">secret_data</span></tt> is a (unicode) string</p>
-<p><tt class="docutils literal"><span class="pre">codec</span></tt> defaults to <tt class="docutils literal"><span class="pre">sys.getdefaultencoding()</span></tt> &#8211; often NOT what you want.</p>
-<p>(There is also the regular <tt class="docutils literal"><span class="pre">open()</span></tt> built in, but it won&#8217;t handle Unicode for you...)</p>
+<p><tt class="docutils literal"><span class="pre">encoding</span></tt> defaults to <tt class="docutils literal"><span class="pre">sys.getdefaultencoding()</span></tt> &#8211; often NOT what you
+want.</p>
+<p>(There is also the regular <tt class="docutils literal"><span class="pre">open()</span></tt> built in, but it won&#8217;t handle Unicode for
+you...)</p>
 <p>Binary Files</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;secrets.bin&#39;</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span>
 <span class="n">secret_data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
@@ -671,7 +687,7 @@
 </div>
 <p><tt class="docutils literal"><span class="pre">secret_data</span></tt>  is a byte string</p>
 <p>(with arbitrary bytes in it &#8211; well, not arbitrary &#8211; whatever is in the file.)</p>
-<p>(See the <tt class="docutils literal"><span class="pre">struct</span></tt>  module to unpack binary data )</p>
+<p>(See the <tt class="docutils literal"><span class="pre">struct</span></tt>  module to unpack formatted binary data)</p>
 <p>File Opening Modes</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;secrets.txt&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">mode</span><span class="p">])</span>
 <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span>
@@ -682,7 +698,8 @@
 <span class="n">U</span><span class="o">+</span>
 </pre></div>
 </div>
-<p>These follow the Unix conventions, and aren&#8217;t all that well documented on the Python docs. But these BSD docs make it pretty clear:</p>
+<p>These follow the Unix conventions, and aren&#8217;t all that well documented on the
+Python docs. But these BSD docs make it pretty clear:</p>
 <p><a class="reference external" href="http://www.manpagez.com/man/3/fopen/">http://www.manpagez.com/man/3/fopen/</a></p>
 <p><strong>Gotcha</strong> &#8211; &#8216;w&#8217; modes always clear the file</p>
 <p>Text is default</p>
@@ -690,7 +707,8 @@
 <li>Newlines are translated: <tt class="docutils literal"><span class="pre">\r\n</span> <span class="pre">-&gt;</span> <span class="pre">\n</span></tt></li>
 <li>&#8211; reading and writing!</li>
 <li>Use *nix-style in your code: <tt class="docutils literal"><span class="pre">\n</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">io.open()</span></tt> returns various &#8220;stream&#8221; objects &#8211; but they act like file objects.</li>
+<li><tt class="docutils literal"><span class="pre">io.open()</span></tt> returns various &#8220;stream&#8221; objects &#8211; but they act like file
+objects.</li>
 <li>In text mode, io.open() defaults to &#8220;Universal&#8221; newline mode.</li>
 </ul>
 <p>Gotcha:</p>
@@ -703,10 +721,13 @@
 <li><tt class="docutils literal"><span class="pre">file</span></tt> is generally a file name or full path</li>
 <li><tt class="docutils literal"><span class="pre">mode</span></tt> is the mode for opening: &#8216;r&#8217;, &#8216;w&#8217;, etc.</li>
 <li><tt class="docutils literal"><span class="pre">buffering</span></tt> controls the buffering mode (0 for no buffering)</li>
-<li><tt class="docutils literal"><span class="pre">encoding</span></tt> sets the unicode encoding &#8211; only for text files &#8211; when set, you can ONLY write unicode object to the file.</li>
+<li><tt class="docutils literal"><span class="pre">encoding</span></tt> sets the unicode encoding &#8211; only for text files &#8211; when set,
+you can ONLY write unicode object to the file.</li>
 <li><tt class="docutils literal"><span class="pre">errors</span></tt> sets the encoding error mode: &#8216;strict&#8217;, &#8216;ignore&#8217;, &#8216;replace&#8217;,...</li>
-<li><tt class="docutils literal"><span class="pre">newline</span></tt> controls Universal Newline mode: lets you write DOS-type files on *nix, for instance (text mode only).</li>
-<li><tt class="docutils literal"><span class="pre">closedfd</span></tt> controls close()  behavior if a file descriptor, rather than a name is passed in (advanced usage!)</li>
+<li><tt class="docutils literal"><span class="pre">newline</span></tt> controls Universal Newline mode: lets you write DOS-type files on
+*nix, for instance (text mode only).</li>
+<li><tt class="docutils literal"><span class="pre">closedfd</span></tt> controls close()  behavior if a file descriptor, rather than a
+name is passed in (advanced usage!)</li>
 </ul>
 <p>(<a class="reference external" href="https://docs.python.org/2/library/io.html?highlight=io.open#io.open">https://docs.python.org/2/library/io.html?highlight=io.open#io.open</a>)</p>
 </div>
@@ -725,6 +746,7 @@
     <span class="k">print</span> <span class="n">line</span>
 </pre></div>
 </div>
+<div class="build container">
 <p>(the file object is an iterator!)</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;secrets.txt&#39;</span><span class="p">)</span>
 <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -733,6 +755,7 @@
         <span class="k">break</span>
     <span class="n">do_something_with_line</span><span class="p">()</span>
 </pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="file-writing">
@@ -746,11 +769,11 @@
 <div class="section" id="file-methods">
 <h3>File Methods<a class="headerlink" href="#file-methods" title="Permalink to this headline">¶</a></h3>
 <p>Commonly Used Methods</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>  <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 
 <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="n">f</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
 
-<span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span>   <span class="n">f</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span> <span class="n">f</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>
 
 <span class="n">f</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
 
@@ -761,7 +784,7 @@
 <div class="section" id="file-like-objects">
 <h3>File Like Objects<a class="headerlink" href="#file-like-objects" title="Permalink to this headline">¶</a></h3>
 <p>Many classes implement the file interface:</p>
-<ul class="simple">
+<ul class="build simple">
 <li>loggers</li>
 <li><tt class="docutils literal"><span class="pre">sys.stdout</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">urllib.open()</span></tt></li>
@@ -860,13 +883,13 @@ os.path.relpath()￼
 <h3>Assignments:<a class="headerlink" href="#assignments" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>dict/sets lab</li>
-<li>coding kata: trigrams</li>
 <li>Exceptions</li>
-<li>Update mailroom with dicts.</li>
+<li>coding kata: trigrams</li>
+<li>Mailroom Madness</li>
 </ul>
 </div>
-<div class="section" id="id5">
-<h3>Dictionaries and Sets<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3>Dictionaries and Sets<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li></li>
 </ol>
@@ -923,19 +946,21 @@ divisible 2, 3 and 4.</li>
 <li><p class="first">Coding Kata 14 - Dave Thomas</p>
 <p><a class="reference external" href="http://codekata.com/kata/kata14-tom-swift-under-the-milkwood/">http://codekata.com/kata/kata14-tom-swift-under-the-milkwood/</a></p>
 <p>and in this doc:</p>
-<p><a class="reference external" href="http://codefellows.github.io/sea-c15-python/supplements/kata_fourteen.html">http://codefellows.github.io/sea-c15-python/supplements/kata_fourteen.html</a></p>
+<p><a class="reference external" href="http://codefellows.github.io/sea-c28-students/supplements/kata_fourteen.html">http://codefellows.github.io/sea-c28-students/supplements/kata_fourteen.html</a></p>
 </li>
 <li><p class="first">Use The Adventures of Sherlock Holmes as input:</p>
-<p><a class="reference external" href="http://codefellows.github.io/sea-c15-python/_downloads/sherlock.txt">http://codefellows.github.io/sea-c15-python/_downloads/sherlock.txt</a></p>
+<p><a class="reference external" href="http://codefellows.github.io/sea-c28-students/_downloads/sherlock.txt">http://codefellows.github.io/sea-c28-students/_downloads/sherlock.txt</a></p>
 </li>
-<li><p class="first">This is intentionally open-ended and underspecified. There are many interesting decisions to make.</p>
+<li><p class="first">This is intentionally open-ended and underspecified. There are many
+interesting decisions to make.</p>
 </li>
-<li><p class="first">Experiment with different lengths for the lookup key. (3 words, 4 words, 3 letters, etc)</p>
+<li><p class="first">Experiment with different lengths for the lookup key. (3 words, 4 words, 3
+letters, etc)</p>
 </li>
 </ul>
 </div>
-<div class="section" id="id6">
-<h3>Exceptions<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>Exceptions<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>Improving <tt class="docutils literal"><span class="pre">raw_input</span></tt></p>
 <ul class="simple">
 <li>The <tt class="docutils literal"><span class="pre">raw_input()</span></tt>  function can generate two exceptions: <tt class="docutils literal"><span class="pre">EOFError</span></tt>  or
@@ -943,8 +968,8 @@ divisible 2, 3 and 4.</li>
 <li>Create a wrapper function, perhaps <tt class="docutils literal"><span class="pre">safe_input()</span></tt>  that returns <tt class="docutils literal"><span class="pre">None</span></tt>
 rather rather than raising these exceptions, when the user enters <tt class="docutils literal"><span class="pre">^C</span></tt>  for
 Keyboard Interrupt, or <tt class="docutils literal"><span class="pre">^D</span></tt> (<tt class="docutils literal"><span class="pre">^Z</span></tt>  on Windows) for End Of File.</li>
-<li>Update your mailroom program to use exceptions (and IBAFP) to handle
-malformed numeric input</li>
+<li>Use this wrapper to get input from users in your mailroom program and use
+exceptions (and EAFP) to handle malformed numeric input</li>
 </ul>
 </div>
 <div class="section" id="paths-and-file-processing">
@@ -954,11 +979,19 @@ malformed numeric input</li>
 directory, one per line</li>
 <li>write a program which copies a file from a source, to a destination (without
 using shutil, or the OS copy command)</li>
-<li>update mailroom from last weeks homework to:<ul>
+</ul>
+</div>
+<div class="section" id="mailroom-madness">
+<h3>Mailroom Madness<a class="headerlink" href="#mailroom-madness" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Using all you&#8217;ve learned so far, complete your mailroom program according to
+the pseudocode and flow chart you created last session.<ul>
 <li>use dicts where appropriate</li>
-<li>write a full set of letters to everyone to individual files on disk</li>
 <li>see if you can use a dict to switch between the users selections</li>
-<li>Try to use a dict and the .format() method to do the letter as one big template &#8211; rather than building up a big string in parts.</li>
+<li>Try to use a dict and the .format() method to do the letter as one big
+template &#8211; rather than building up a big string in parts.</li>
+<li>For extra fun, see if you can use a file to preserve the donation list and
+changes made to it while the program is running.</li>
 </ul>
 </li>
 </ul>
@@ -1004,7 +1037,6 @@ using shutil, or the OS copy command)</li>
 <li><a class="reference internal" href="#exceptions">Exceptions</a><ul>
 <li><a class="reference internal" href="#id2">Exceptions</a></li>
 <li><a class="reference internal" href="#id3">Exceptions</a></li>
-<li><a class="reference internal" href="#id4">Exceptions</a></li>
 <li><a class="reference internal" href="#exceptions-finally">Exceptions &#8211; finally</a></li>
 <li><a class="reference internal" href="#exceptions-else">Exceptions &#8211; else</a></li>
 <li><a class="reference internal" href="#exceptions-using-them">Exceptions &#8211; using them</a></li>
@@ -1030,10 +1062,11 @@ using shutil, or the OS copy command)</li>
 <li><a class="reference internal" href="#homework">Homework</a><ul>
 <li><a class="reference internal" href="#recommended-reading">Recommended Reading:</a></li>
 <li><a class="reference internal" href="#assignments">Assignments:</a></li>
-<li><a class="reference internal" href="#id5">Dictionaries and Sets</a></li>
+<li><a class="reference internal" href="#id4">Dictionaries and Sets</a></li>
 <li><a class="reference internal" href="#text-and-files-and-dicts-and">Text and files and dicts, and...</a></li>
-<li><a class="reference internal" href="#id6">Exceptions</a></li>
+<li><a class="reference internal" href="#id5">Exceptions</a></li>
 <li><a class="reference internal" href="#paths-and-file-processing">Paths and File Processing</a></li>
+<li><a class="reference internal" href="#mailroom-madness">Mailroom Madness</a></li>
 </ul>
 </li>
 </ul>
