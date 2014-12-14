@@ -32,4 +32,22 @@ print(u"Dictionary: " + unicode(dict2))
 
 print(u"Task 3")
 
-dict3 = dict(zip(dict1.keys(), 
+dict3 = dict(zip(dict1.keys(), ((u'Number of "a"s: ' + unicode(i.count(u"a"))) for i in dict1.keys())))
+
+print(u"Dictionary: " + unicode(dict3))
+
+#Task 4
+
+print(u"Task 4")
+
+s2 = set(i for i in range(21) if not i % 2)
+s3 = set(i for i in range(21) if not i % 3)
+s4 = set(i for i in range(21) if not i % 4)
+
+print(u"s2: " + unicode(s2))
+print(u"s3: " + unicode(s3))
+print(u"s4: " + unicode(s4))
+
+print(u"s3 is a subset of s2: " + unicode(s3.issubset(s2)))
+print(u"s4 is a subset of s2: " + unicode(s4.issubset(s2)))
+
