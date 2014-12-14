@@ -28,3 +28,8 @@ dict2 = dict(zip(range(16), (hex(i) for i in range(16))))
 
 print(u"Dictionary: " + unicode(dict2))
 
+#Task 3
+
+print(u"Task 3")
+
+dict3 = dict(zip(dict1.keys(), 
