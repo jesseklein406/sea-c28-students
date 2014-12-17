@@ -6,21 +6,19 @@ import math
 
 f = io.open("sherlock.txt", encoding="utf-8")
 story = f.read()
-story_list = story.split()
+story_list = story.split(u" ")
 
 story_dict = {}
 
 for i in xrange(len(story_list[:])):
     key_words = u" ".join(story_list[:2])
-    if len(story_list) == 1:
-        key_words += u" lorem"
-    story_dict[key_words] = story_dict.get(key_words, [])
-    if len(story_list) == 2:
-        story_dict[key_words].append(u"lorem")
-    elif len(story_list) == 1:
-        story_dict[key_words].append(u"ipsum")
+    if len(story_list) > 2:
+        story_dict.setdefault(key_words, []).append(story_list[2])
+    elif len(story_list) == 2:
+        story_dict.setdefault(key_words, []).append(u"lorem")
     else:
-        story_dict[key_words].append(story_list[2])
+        key_words += u" lorem"
+        story_dict.setdefault(key_words, []).append(u"ipsum")
     story_list.pop(0)
 
 new_story = u"So there I was"
