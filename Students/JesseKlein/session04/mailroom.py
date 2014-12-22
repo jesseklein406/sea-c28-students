@@ -5,7 +5,7 @@ navigate the script.
 """
 
 from datetime import date
-from safe_input import safe_input
+from safe_input import safe_input    # Reuse from safe_input assignment
 
 donor_dict = {u"Mark Zuckerberg": {u"12-1-2014": 1000., u"12-2-2014":
     2000., u"12-3-2014": 1000.}, u"Michael Bloomberg": {u"12-1-2014":
@@ -56,7 +56,7 @@ def input_a_donation(donor):
     if reply != u"return":
         while True:
             try:
-                reply = float(reply)
+                reply = float(reply)    # Check to see if it is a number
                 break
             except ValueError:
                 reply = unicode(safe_input(u"That is not a number. Please input the donor's donation amount in $. " +
@@ -84,6 +84,7 @@ def create_report():
 
 if __name__ == "__main__":
     
+    # Allow the loop to repeat back to the top only breaking with "quit"
     while True:
         main_input = main_menu()
         if main_input.lower() == u"send a thank you":
