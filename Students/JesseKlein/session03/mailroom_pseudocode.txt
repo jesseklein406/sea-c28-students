@@ -1,0 +1,83 @@
+"""Begin this script by calling the main_menu function first."""
+
+    donor_dict = {keys=donors, values={keys=dates, values=donations}}
+
+def main_menu():
+    """Prompt the user to choose between 'Send a Thank You' and 'Create
+    a report'. Give the user the option to exit the script.
+    """
+    reply = ask_for_input(prompt)
+    
+    if reply == "quit"
+        exit_script
+    
+    while reply != valid_options
+        reply = ask_for_correct_input(prompt)
+    
+    return reply
+
+
+def send_a_thank_you_menu():
+    """Prompt the user to choose to see a list of donors or to input a
+    donation for a thank you by entering a donor's full name. Give the
+    user the choice to return to the main menu.
+    """
+    reply = ask_for_input(prompt)
+    
+    if reply == "return"
+        return_to_main_menu
+    
+    return reply
+
+
+def show_list():
+    """Print a list of donor names and re-prompt the choices from the
+    send_a_thank_you_menu. Give the user the choice to return to the
+    main menu.
+    """
+    print(a_list_of_donors)
+
+    reply = ask_for_input(prompt)
+
+    if reply == "return"
+        return_to_main_menu
+
+    return reply
+
+
+def input_a_donation(donor):
+    """Prompt the user for a donation amount and record it. Give the
+    user the option to exit the script. Compose and print a thank you
+    email. Return the user to the main menu.
+    """
+    reply = ask_for_input(prompt)
+    
+    while True:
+        if reply == "return"
+            return_to_main_menu
+            break
+        try:
+            convert_reply_to_float_type
+            break
+        except ValueError:
+            reply = ask_for_correct_input(prompt)
+    
+    reply ==> donor_dict[donor][date_today]
+    
+    email = compose_email
+    print(email)
+
+    return_to_the_main_menu
+
+
+def create_report():
+    """Create and print a tabular report including donor names, total
+    donated, number of donations, and average donation. Return the user
+    to the main menu.
+    """
+    print(table_header, "\n")
+    for donor in donor_dict:
+        print(donor_info, "\n")
+    
+    return_to_the_main_menu
+
