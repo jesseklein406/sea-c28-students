@@ -14,14 +14,14 @@ def clean(s):
     Enter a string as an argument. Return another string.
     """
     list_s = s.split(u"\n")
-    strip_s = map(unicode, map(str.strip, map(str, list_s)))    # Assign modified list to another list
+    strip_s = [unicode(str(item).strip()) for item in list_s]    # Assign modified list to another list
     cleaned_s = u"\n".join(strip_s)
     return cleaned_s
 
 
 f = io.open(filename, "r+", encoding="utf-8")
 f_string = f.read()
-new_f_string = map(clean, [f_string])[0]    # Return the first and only item in the mapped list to get the new string
+new_f_string = clean(f_string)
 
 
 c = raw_input(u"Please type 1 to create a new file or 2 to overwrite the existing one: ")
