@@ -1,0 +1,1 @@
+I have a strong background in security and information management. I have worked on and maintained Central Washington University's diversity webpage. I like to work in teams to develop programs that uses technology to help serve people and organizations. I have experience in web development, database managment, customer service, security, and networking.
