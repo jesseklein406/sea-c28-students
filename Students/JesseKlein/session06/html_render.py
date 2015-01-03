@@ -33,19 +33,19 @@ class Element(object):
             if type(self.content[i]) in [str, unicode]:
                 if i == 0:
                     stuff.append(u"".join([ind, self.indent]))
-                elif not isinstance(self.content[i - 1], OneLineTag) or isinstance(self.content[i - 1], Title):
+                elif not isinstance(self.content[i - 1], OneLineTag) or isinstance(self.content[i - 1], (Title, H)):
                     stuff.append(u"".join([ind, self.indent]))
                 stuff.append(unicode(self.content[i]))
                 if i == (len(self.content) - 1):
                     stuff.append(u"\n")
-                elif not isinstance(self.content[i + 1], OneLineTag) or isinstance(self.content[i + 1], Title):
+                elif not isinstance(self.content[i + 1], OneLineTag) or isinstance(self.content[i + 1], (Title, H)):
                     stuff.append(u"\n")
             else:
                 self.content[i].render(file_out, ind)
                 file_out.seek(0)
                 line = file_out.readline()
                 while line:
-                    stuff.append(u"".join([self.indent, unicode(line)]))
+                    stuff.append(u"".join([self.indent if not isinstance(self.content[i], OneLineTag) or isinstance(self.content[i], (Title, H)) else u"", unicode(line)]))
                     line = file_out.readline()
                 file_out.seek(0)
                 file_out.truncate(0)
@@ -59,6 +59,15 @@ class Html(Element):
     def __init__(self, content=None, **kwargs):
         Element.__init__(self, content, **kwargs)
         self.tag = u"html"
+
+
+    def render(self, file_out, ind=u""):
+        Element.render(self, file_out, ind)
+        file_out.seek(0)
+        document = file_out.read()
+        file_out.seek(0)
+        file_out.writelines([u"<!DOCTYPE html>\n", document])
+
 
 
 class Body(Element):
@@ -95,7 +104,7 @@ class OneLineTag(Element):
                 file_out.seek(0)
                 file_out.truncate(0)
         
-        file_out.writelines([u"<", self.tag, u"".join([u' %s="%s"' % (key, value) for key, value in self.attributes.items()]), u">", u"".join(stuff), u"</", self.tag, u">", u"\n" if self.tag in [u"title"] else u""])
+        file_out.writelines([u"<", self.tag, u"".join([u' %s="%s"' % (key, value) for key, value in self.attributes.items()]), u">", u"".join(stuff), u"</", self.tag, u">", u"\n" if self.tag in [u"title", u"h1", u"h2", u"h3", u"h4", u"h5", u"h6"] else u""])
 
 
 class Title(OneLineTag):
@@ -112,4 +121,46 @@ class SelfClosingTag(Element):
         
     def render(self, file_out, ind=u""):
         file_out.writelines([u"<", self.tag, u"".join([u' %s="%s"' % (key, value) for key, value in self.attributes.items()]), u" />\n"])
+
+
+class Hr(SelfClosingTag):
+    def __init__(self, **kwargs):
+        SelfClosingTag.__init__(self, **kwargs)
+        self.tag = u"hr"
+
+
+class Br(SelfClosingTag):
+    def __init__(self, **kwargs):
+        SelfClosingTag.__init__(self, **kwargs)
+        self.tag = u"br"
+
+
+class A(OneLineTag):
+    def __init__(self, link, content=None):
+        Element.__init__(self, content, href=link)
+        self.tag = u"a"
+
+
+class Ul(Element):
+    def __init__(self, content=None, **kwargs):
+        Element.__init__(self, content, **kwargs)
+        self.tag = u"ul"
+
+
+class Li(Element):
+    def __init__(self, content=None, **kwargs):
+        Element.__init__(self, content, **kwargs)
+        self.tag = u"li"
+
+
+class H(OneLineTag):
+    def __init__(self, integer, content=None, **kwargs):
+        Element.__init__(self, content, **kwargs)
+        self.tag = u"".join([u"h", unicode(integer)])
+
+
+class Meta(SelfClosingTag):
+    def __init__(self, **kwargs):
+        SelfClosingTag.__init__(self, **kwargs)
+        self.tag = u"meta"
 
